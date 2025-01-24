@@ -97,10 +97,10 @@
 	},
 	"sources": {
 		"contracts/SolByExample.sol": {
-			"keccak256": "0x093f56f2de9d4de17c8e3d0a4288655a0962c353df8d73c547975215026c13b9",
+			"keccak256": "0x5136a263a42d932615096ad7a8ac1ca9ee68fb626531cf987fabc892d6b7a626",
 			"urls": [
-				"bzz-raw://de8ad22cb0603872bf6822f47033282cb43026cb3af7bc413326120de3df7f2a",
-				"dweb:/ipfs/QmdEgvgph8mkFZDVD57jMugi7kVqWDnZCWWAH7NqWZiMwa"
+				"bzz-raw://f62b2ca7a45dfd33ab753977b4331f2f0cddf2de5449f7686812e2a7fb5b43d7",
+				"dweb:/ipfs/QmYNa4UGGHKWMGokSwaNdNyJkyKde54w9qn4EMsePML3T3"
 			]
 		}
 	},

@@ -8,20 +8,24 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "x",
-						"type": "uint256"
-					}
-				],
-				"name": "testSquareRoot",
-				"outputs": [
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
 					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "value",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "pure",
+				"name": "handleTransferEvent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -38,7 +42,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/SolByExample.sol": "TestMath"
+			"contracts/MultiSig.sol": "IEventSubscriber"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -52,11 +56,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/SolByExample.sol": {
-			"keccak256": "0x5136a263a42d932615096ad7a8ac1ca9ee68fb626531cf987fabc892d6b7a626",
+		"contracts/MultiSig.sol": {
+			"keccak256": "0x681af18d718addbb6c83c85854f286ff6ce1c937aec34e7e9e36e1c0753fee97",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://f62b2ca7a45dfd33ab753977b4331f2f0cddf2de5449f7686812e2a7fb5b43d7",
-				"dweb:/ipfs/QmYNa4UGGHKWMGokSwaNdNyJkyKde54w9qn4EMsePML3T3"
+				"bzz-raw://193fbb0db46c5587a5c93342006c048aab77bf8802864ea0e5ebdbaed27fe99b",
+				"dweb:/ipfs/QmViWVgmWJAAd4ai69wM8xhF86oWtCeqSnkfS2rmiqG62K"
 			]
 		}
 	},

@@ -1,59 +1,48 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.26;
 
-contract FunctionModifier {
-    // We will use these variables to demonstrate how to use
-    // modifiers.
-    address public owner;
-    uint256 public x = 10;
-    bool public locked;
+// NOTE: Deploy this contract first
+contract B {
+    // NOTE: storage layout must be the same as contract A
+    uint256 public num;
+    address public sender;
+    uint256 public value;
 
-    constructor() {
-        // Set the transaction sender as the owner of the contract.
-        owner = msg.sender;
+    function setVars(uint256 _num) public payable {
+        num = _num;
+        sender = msg.sender;
+        value = msg.value;
     }
+}
 
-    // Modifier to check that the caller is the owner of
-    // the contract.
-    modifier onlyOwner() {
-        require(msg.sender == owner, "Not owner");
-        // Underscore is a special character only used inside
-        // a function modifier and it tells Solidity to
-        // execute the rest of the code.
-        _;
-    }
+contract A {
+    uint256 public num;
+    address public sender;
+    uint256 public value;
 
-    // Modifiers can take inputs. This modifier checks that the
-    // address passed in is not the zero address.
-    modifier validAddress(address _addr) {
-        require(_addr != address(0), "Not valid address");
-        _;
-    }
+    event DelegateResponse(bool success, bytes data);
+    event CallResponse(bool success, bytes data);
 
-    function changeOwner(address _newOwner)
+    // Function using delegatecall
+    function setVarsDelegateCall(address _contract, uint256 _num)
         public
-        onlyOwner
-        validAddress(_newOwner)
+        payable
     {
-        owner = _newOwner;
+        // A's storage is set; B's storage is not modified.
+        (bool success, bytes memory data) = _contract.delegatecall(
+            abi.encodeWithSignature("setVars(uint256)", _num)
+        );
+
+        emit DelegateResponse(success, data);
     }
 
-    // Modifiers can be called before and / or after a function.
-    // This modifier prevents a function from being called while
-    // it is still executing.
-    modifier noReentrancy() {
-        require(!locked, "No reentrancy");
+    // Function using call
+    function setVarsCall(address _contract, uint256 _num) public payable {
+        // B's storage is set; A's storage is not modified.
+        (bool success, bytes memory data) = _contract.call{value: msg.value}(
+            abi.encodeWithSignature("setVars(uint256)", _num)
+        );
 
-        locked = false;
-        _;
-        locked = true;
-    }
-
-    function decrement(uint256 i) public noReentrancy {
-        x -= i;
-
-        if (i > 1) {
-            decrement(i - 1);
-        }
+        emit CallResponse(success, data);
     }
 }
