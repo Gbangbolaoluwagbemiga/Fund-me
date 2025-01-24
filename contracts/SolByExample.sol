@@ -6,7 +6,6 @@ mapping (uint256=>address) mapped;
 
 address[] mappedArr;
 
-
 function set(uint256 _key, address _owner) public{
     mapped[_key]=_owner;
     mappedArr.push(_owner);
@@ -14,7 +13,6 @@ function set(uint256 _key, address _owner) public{
 
 function retreive(uint256 _key) view public returns (address){
 return mapped[_key];
-
 }
 
 function retreiveAll() view public returns (address[] memory) {
@@ -52,7 +50,6 @@ function checkmate() public view returns (string memory){
      string memory name=  "congratulations";
      return name;
 }
-
 
     function reset() public {
         delete status;
@@ -104,3 +101,5 @@ contract TestMath {
         return x.sqrt();
     }
 }
+
+
