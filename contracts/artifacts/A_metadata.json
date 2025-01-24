@@ -10,31 +10,70 @@
 				"inputs": [
 					{
 						"indexed": false,
-						"internalType": "address",
-						"name": "ca",
-						"type": "address"
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
 					},
 					{
 						"indexed": false,
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					},
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "CallResponse",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
 					{
 						"indexed": false,
 						"internalType": "bool",
-						"name": "res",
+						"name": "success",
 						"type": "bool"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
 					}
 				],
-				"name": "delegateRes",
+				"name": "DelegateResponse",
 				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "num",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "sender",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			},
 			{
 				"inputs": [
 					{
-						"internalType": "address payable",
-						"name": "_CA",
+						"internalType": "address",
+						"name": "_contract",
 						"type": "address"
 					},
 					{
@@ -43,14 +82,32 @@
 						"type": "uint256"
 					}
 				],
-				"name": "modify",
+				"name": "setVarsCall",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_contract",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_num",
+						"type": "uint256"
+					}
+				],
+				"name": "setVarsDelegateCall",
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
 				"inputs": [],
-				"name": "num",
+				"name": "value",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -75,7 +132,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/SolByExample.sol": "A"
+			"contracts/MultiSig.sol": "A"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -89,12 +146,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/SolByExample.sol": {
-			"keccak256": "0x2e74916160a66fd748856d3eeb0d7ee572bc956697fd738e12cb46146bf75c38",
+		"contracts/MultiSig.sol": {
+			"keccak256": "0xef05d3dfd7fbf3115637a1c690a98dcfeaf98860aa84cf15066d2be5ebab413f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7e26b49c7b1487bb781c9e2019aba4de6efd33cae73ec2d6641cf3097ed61714",
-				"dweb:/ipfs/QmcongwZWPRRuZ1Kb6VN7ABiq9WxShhE8zh48gMFrqLFrS"
+				"bzz-raw://b006df01ba14dc128c12331269c32299c5263eef5c7892af786df41370f5889e",
+				"dweb:/ipfs/QmUdMVSWjwm99AoBnRdunKZYLDbCBsZi9JjX44EfqJomr1"
 			]
 		}
 	},

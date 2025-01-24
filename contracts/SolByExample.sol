@@ -2,32 +2,98 @@
 pragma solidity ^0.8.7;
 
 
+// Create contract from a contract
+
+contract Car {
+    address public owner;
+    string public model;
+    address public carAddr;
+
+    constructor(address _owner, string memory _model) payable {
+        owner = _owner;
+        model = _model;
+        carAddr = address(this);
+    }
+
+    function withdraw() public {
+        
+    }
+}
+
+contract CarFactory {
+    Car[] public cars;
+
+    function create(address _owner, string memory _model) public {
+        Car car = new Car(_owner, _model);
+        cars.push(car);
+    }
+
+    function createAndSendEther(address _owner, string memory _model)
+        public
+        payable
+    {
+        Car car = (new Car){value: msg.value}(_owner, _model);
+        cars.push(car);
+    }
+
+    function create2(address _owner, string memory _model, bytes32 _salt)
+        public
+    {
+        Car car = (new Car){salt: _salt}(_owner, _model);
+        cars.push(car);
+    }
+
+    function create2AndSendEther(
+        address _owner,
+        string memory _model,
+        bytes32 _salt
+    ) public payable {
+        Car car = (new Car){value: msg.value, salt: _salt}(_owner, _model);
+        cars.push(car);
+    }
+
+    function getCar(uint256 _index)
+        public
+        view
+        returns (
+            address owner,
+            string memory model,
+            address carAddr,
+            uint256 balance
+        )
+    {
+        Car car = cars[_index];
+
+        return (car.owner(), car.model(), car.carAddr(), address(car).balance);
+    }
+}
+
+
+
 // DeleteCall
-contract B{
-    uint256 public num;
-    address hey;
+// contract B{
+//     uint256 public num;
+//     address hey;
 
-    function foo(uint256 _num, address _hey) public payable{
-        num+=_num;
-        hey=_hey;
-    }
-}
+//     function foo(uint256 _num, address _hey) public payable{
+//         num+=_num;
+//         hey=_hey;
+//     }
+// }
 
-contract A{
-     uint256 public num;
-    address hey;
+// contract A{
+//      uint256 public num;
+//     address hey;
 
-    event delegateRes(address ca, uint amount, bool res);
+//     event delegateRes(address ca, uint amount, bool res);
 
-    function modify(address payable  _CA, uint256 _num) public payable  {
-    (bool success,) = _CA.delegatecall(abi.encodeWithSignature("foo(uint256,address)", _num,_CA));
+//     function modify(address payable  _CA, uint256 _num) public payable  {
+//     (bool success,) = _CA.delegatecall(abi.encodeWithSignature("foo(uint256,address)", _num,_CA));
 
-    emit delegateRes(_CA, _num, success);
-    }
+//     emit delegateRes(_CA, _num, success);
+//     }
 
-
-
-}
+// }
 
 
 

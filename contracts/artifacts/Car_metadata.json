@@ -6,21 +6,24 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
-				"name": "num",
-				"outputs": [
+				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_model",
+						"type": "string"
 					}
 				],
-				"stateMutability": "view",
-				"type": "function"
+				"stateMutability": "payable",
+				"type": "constructor"
 			},
 			{
 				"inputs": [],
-				"name": "sender",
+				"name": "carAddr",
 				"outputs": [
 					{
 						"internalType": "address",
@@ -32,26 +35,26 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
+				"inputs": [],
+				"name": "model",
+				"outputs": [
 					{
-						"internalType": "uint256",
-						"name": "_num",
-						"type": "uint256"
+						"internalType": "string",
+						"name": "",
+						"type": "string"
 					}
 				],
-				"name": "setVars",
-				"outputs": [],
-				"stateMutability": "payable",
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
 				"inputs": [],
-				"name": "value",
+				"name": "owner",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "address",
 						"name": "",
-						"type": "uint256"
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -71,7 +74,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/MultiSig.sol": "B"
+			"contracts/SolByExample.sol": "Car"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -85,12 +88,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/MultiSig.sol": {
-			"keccak256": "0xef05d3dfd7fbf3115637a1c690a98dcfeaf98860aa84cf15066d2be5ebab413f",
+		"contracts/SolByExample.sol": {
+			"keccak256": "0xc35fd4e8fcf91db56e90b670f2ce24df4cf312f818ed551ffa34f4f244e47e03",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b006df01ba14dc128c12331269c32299c5263eef5c7892af786df41370f5889e",
-				"dweb:/ipfs/QmUdMVSWjwm99AoBnRdunKZYLDbCBsZi9JjX44EfqJomr1"
+				"bzz-raw://7ddcd9a20c775a9c6e79db275b3f587a79ec750ca1289fc4ebaa5efaa723abb0",
+				"dweb:/ipfs/QmfR1LpYcf3BpG3jLyZpuHKQ75zpdTXYVe6Z5LHmQVVM7z"
 			]
 		}
 	},
