@@ -15,4 +15,17 @@ contract FundMe{
         return AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306).version();
 
     }
+
+    modifier onlyOwner{
+        require("owner");
+        _;
+    }
+
+    // modifier only owner
+    // fallback() 
+    // receive
+    // withdraw
+    // funders
+    // amount funded
+    // price converter
 }
