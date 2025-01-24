@@ -19,7 +19,7 @@ contract FundMe{
     }
 
     function send() public payable {
-//    require(msg.value.getConversionRate()>=MINIMUM_USD, "Not enough Gas");
+   require(msg.value.getConversionRate()>=MINIMUM_USD, "Not enough Gas");
    if(amountFunded[msg.sender]==0 ){
     _funders.push(msg.sender);
    }
