@@ -19,7 +19,7 @@ contract FundMe{
     }
 
     function send() public payable {
-   require(msg.value.getConversionRate()>=MINIMUM_USD, "Not enough Gas");
+//    require(msg.value.getConversionRate()>=MINIMUM_USD, "Not enough Gas");
    if(amountFunded[msg.sender]==0 ){
     _funders.push(msg.sender);
    }
@@ -35,13 +35,19 @@ contract FundMe{
 
     }
 
-    function withdrawal(address payable _to) public {
+    function withdrawal(address payable _to) public onlyOwner(_to) {
         (bool success,)=_to.call{value:address(this).balance}("");
+
+        for(uint256 funderIndex; funderIndex<_funders.length; funderIndex++){
+         address _funder=   _funders[funderIndex];
+         amountFunded[_funder]=0;
+        }
+        _funders= new address[](0);
         require(success, "Transfer error");
     }
 
-    modifier onlyOwner{
-        require(msg.sender==owner, "can't withdraw, not owner of the contract");
+    modifier onlyOwner(address _to){
+        require(_to==owner, "can't withdraw, not owner of the contract");
         _;
     }
 
