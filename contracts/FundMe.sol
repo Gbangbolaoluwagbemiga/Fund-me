@@ -3,12 +3,31 @@
 pragma solidity ^0.8.7;
 
 import {AggregatorV3Interface} from "@chainlink/contracts@1.2.0/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
+import {PriceConverter} from "./PriceConverter.sol";
+
+
 
 contract FundMe{
-    uint256 public minimumUsd=5;
+    using PriceConverter for uint256;
+    uint256 public constant MINIMUM_USD=5e18;
+    address owner;
+    address[] _funders;
+    mapping (address funder=> uint256 amount) public amountFunded;
+
+    constructor(){
+        owner = msg.sender;
+    }
 
     function send() public payable {
-   require(msg.value>=minimumUsd, "Not enough Gas");
+   require(msg.value.getConversionRate()>=MINIMUM_USD, "Not enough Gas");
+   if(amountFunded[msg.sender]==0 ){
+    _funders.push(msg.sender);
+   }
+   amountFunded[msg.sender]+=msg.value;
+    }
+
+    function funders()public view returns (address[] memory){
+        return _funders;
     }
 
     function getVersion() public view returns (uint256){
@@ -16,10 +35,24 @@ contract FundMe{
 
     }
 
+    function withdrawal(address payable _to) public {
+        (bool success,)=_to.call{value:address(this).balance}("");
+        require(success, "Transfer error");
+    }
+
     modifier onlyOwner{
-        require("owner");
+        require(msg.sender==owner, "can't withdraw, not owner of the contract");
         _;
     }
+
+  receive() external payable {
+    send();
+   }
+  
+  
+    // fallback() external payable { 
+    //     send();
+    // }
 
     // modifier only owner
     // fallback() 
