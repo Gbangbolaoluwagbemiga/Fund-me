@@ -8,6 +8,7 @@ contract Car {
     address public owner;
     string public model;
     address public carAddr;
+    bytes public data;
 
     constructor(address _owner, string memory _model) payable {
         owner = _owner;
@@ -15,10 +16,13 @@ contract Car {
         carAddr = address(this);
     }
 
-    function withdraw() public {
-        
+    function withdraw() public returns(bytes memory) {
+        (, bytes memory _byte)= msg.sender.call{value:address(this).balance}("");
+
+        data=_byte; 
+        return data;
     }
-}
+} 
 
 contract CarFactory {
     Car[] public cars;

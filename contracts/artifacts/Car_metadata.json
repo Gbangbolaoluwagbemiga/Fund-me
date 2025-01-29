@@ -36,6 +36,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "data",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "model",
 				"outputs": [
 					{
@@ -58,6 +71,19 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdraw",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -89,11 +115,11 @@
 	},
 	"sources": {
 		"contracts/SolByExample.sol": {
-			"keccak256": "0xc35fd4e8fcf91db56e90b670f2ce24df4cf312f818ed551ffa34f4f244e47e03",
+			"keccak256": "0xc952cd181e065caa0457088e0d53d73f19d725b80a4444e5daf18648c5e269a9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7ddcd9a20c775a9c6e79db275b3f587a79ec750ca1289fc4ebaa5efaa723abb0",
-				"dweb:/ipfs/QmfR1LpYcf3BpG3jLyZpuHKQ75zpdTXYVe6Z5LHmQVVM7z"
+				"bzz-raw://3a2cfafbc73ce92f2908d449bf52095bd71acb82a3666ca7e1e80dc07e649012",
+				"dweb:/ipfs/QmWQoWVD3PMzRCuu3D58cU8v4JcXbh4qiQjqZNECEr5wUK"
 			]
 		}
 	},
